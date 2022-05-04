@@ -9,10 +9,10 @@ const rhythmSelector = document.querySelector('#rhythmSelector');
 
 const sounds = {
   click3: new Howl({
-    src: '/click3.mp3'
+    src: 'click3.mp3'
   }),
   click4: new Howl({
-    src: '/click4.mp3'
+    src: 'click4.mp3'
   })
 }
 
