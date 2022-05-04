@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: #525252;
+    user-select: none;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.metronome {
+    /* border: 1px solid #000; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    height: 250px;
+}
+
+.bpm-display {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #fa545c;
+}
+.bpm-display .tempo {
+    font-size: 4em;
+}
+
+.tempo-text {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .8em;
+}
+
+.tempo-settings {
+    display: flex;
+    justify-content: space-between;
+}
+.tempo-settings .adjust-tempo-btn {
+    font-size: 40px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.tempo-settings .adjust-tempo-btn:hover {
+    color: #fff;
+    background-color: #fa545c;
+}
+.tempo-settings .decrease-tempo {
+    line-height: 25px;
+}
+.tempo-settings .increase-tempo {
+    line-height: 32px;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    background-color: transparent;
+    width: 70%;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fa545c;
+    cursor: pointer;
+    margin-top: -8px;
+}
+input[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fa545c;
+    border: none;
+    cursor: pointer;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 1px;
+    background: #ddd;
+}
+
+.start-stop {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fa545c;
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+    font-size: 0.7em;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.start-stop:hover {
+    background: #ff656c;
+}
+
+.rhythms {
+    display: flex;
+    justify-content: center;
+}
+
