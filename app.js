@@ -13,8 +13,20 @@ const sounds = {
   }),
   click4: new Howl({
     src: 'click4.mp3'
+  }),
+  repique1: new Howl({
+    src: 'repique1.mp3'
+  }),
+  repique2: new Howl({
+    src: 'repique2.mp3'
+  }),
+  repique3: new Howl({
+    src: 'repique3.mp3'
+  }),
+  repique4: new Howl({
+    src: 'repique4.mp3'
   })
-}
+};
 
 // 1 min = 60_000 ms
 // 60_000 / bpm = duration of quarter note
@@ -32,12 +44,12 @@ tempoSlider.addEventListener('input', () => {
   updateTempo();
 });
 decreaseTempoBtn.addEventListener('click', () => {
-  if (bpm <= 20) { return };
+  if (bpm <= 50) { return };
   bpm--;
   updateTempo();
 });
 increaseTempoBtn.addEventListener('click', () => {
-  if (bpm >= 200) { return };
+  if (bpm >= 150) { return };
   bpm++;
   updateTempo();
 });
@@ -111,16 +123,17 @@ function updateTempo() {
   tempoSlider.value = bpm;
 };
 
+// samba matrix 80
 const drumTracks = {
- samba: { 
-  subdivisions: 9,  
-  trackMatrix: [2,0,1, 0,1,0, 2,0,0],
-  },
-  drunkFunk: {
-    subdivisions: 5,
-    trackMatrix: [2,0,1,1,0]
-  }
-}
+  samba: { 
+   subdivisions: 80,  
+   trackMatrix: [1,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,2, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,3, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,4,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0],
+   },
+   drunkFunk: {
+     subdivisions: 5,
+     trackMatrix: [2,0,1,1,0]
+   }
+ }
 
 function drumstToPlay() {
   // using drumTracks object
@@ -128,10 +141,16 @@ function drumstToPlay() {
   if (rhythmSelector.value === 'samba') {
     subdivisions = drumTracks.samba.subdivisions;
     if (drumTracks.samba.trackMatrix[beatCount] === 1) {
-      sounds.click3.play();
+      sounds.repique1.play();
     }
     if (drumTracks.samba.trackMatrix[beatCount] === 2) {
-      sounds.click4.play();
+      sounds.repique2.play();
+    }
+    if (drumTracks.samba.trackMatrix[beatCount] === 3) {
+      sounds.repique3.play();
+    }
+    if (drumTracks.samba.trackMatrix[beatCount] === 4) {
+      sounds.repique4.play();
     }
   }
   // drunkFunk
@@ -147,15 +166,16 @@ function drumstToPlay() {
   beatCount++
   if (beatCount === subdivisions) {beatCount = 0}
   // console.log('beat count is', beatCount)
-}
+};
 
-const drumLoop = new Timer(drumstToPlay, msTempo, () => console.log('error!')
+const drumLoop = new Timer(drumstToPlay, msTempo, () => console.log('drift error!')
 );
 
 function startMetronome() {
   beatCount = 0;
   updateTempo();
   drumLoop.start();
+  console.log(bpm);
 }
 function stopMetronome() {
   beatCount = 0;

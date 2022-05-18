@@ -1,0 +1,22 @@
+// Version 1
+// const drumTracks = {
+//  samba: { 
+//   subdivisions: 9,  
+//   trackMatrix: [1,0,2, 0,3,0, 4,0,0],
+//   },
+//   drunkFunk: {
+//     subdivisions: 5,
+//     trackMatrix: [2,0,1,1,0]
+//   }
+// }
+
+// samba feel is almost right. No errors
+// samba: { 
+      // subdivisions: 60,  
+      // trackMatrix: [1,0,0,0,0, 0,0,0,0,0, 0,0,0,0,2, 0,0,0,0,0, 0,0,0,0,0, 3,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 4,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0],
+      // },
+// samba 100 feel is right, but drift error past 120bpm
+//   subdivisions: 100,  
+//   trackMatrix: [1,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,2, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,3,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,4,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0],
+//   },
+// samba 80 feels good, drift error past 150bpm (in cafe on computer)
