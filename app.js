@@ -8,23 +8,26 @@ const startStopBtn = document.querySelector('.start-stop');
 const rhythmSelector = document.querySelector('#rhythmSelector');
 
 const sounds = {
-  click3: new Howl({
-    src: 'click3.mp3'
+  kickCabasa: new Howl({
+    src: 'kick-cabasa.wav'
   }),
-  click4: new Howl({
-    src: 'click4.mp3'
+  cabasa: new Howl({
+    src: 'cabasa.wav'
+  }),
+  clap: new Howl({
+    src: 'clap.wav'
   }),
   repique1: new Howl({
-    src: 'repique1.mp3'
+    src: 'repique1_1.wav'
   }),
   repique2: new Howl({
-    src: 'repique2.mp3'
+    src: 'repique2_1.wav'
   }),
   repique3: new Howl({
-    src: 'repique3.mp3'
+    src: 'repique3_1.wav'
   }),
   repique4: new Howl({
-    src: 'repique4.mp3'
+    src: 'repique4_1.wav'
   })
 };
 
@@ -35,6 +38,7 @@ let bpm = 100;
 let subdivisions = rhythmSelector.value;
 let msTempo = (60000 / bpm) / subdivisions;
 let beatCount = 0;
+let measure = 0;
 
 let isRunning = false;
 let tempoTextString = 'medium';
@@ -55,6 +59,7 @@ increaseTempoBtn.addEventListener('click', () => {
 });
 rhythmSelector.addEventListener('change', () => {
   beatCount = 0;
+  measure = 0;
   updateTempo();
 });
 startStopBtn.addEventListener('click', () => {
@@ -131,7 +136,10 @@ const drumTracks = {
    },
    drunkFunk: {
      subdivisions: 5,
-     trackMatrix: [2,0,1,1,0]
+     trackMatrix: {
+       m0:[3,0,1,1,0],
+       m1:[2,0,1,1,0]
+     }
    }
  }
 
@@ -156,15 +164,33 @@ function drumstToPlay() {
   // drunkFunk
   if (rhythmSelector.value === 'drunkFunk') {
     subdivisions = drumTracks.drunkFunk.subdivisions;
-    if (drumTracks.drunkFunk.trackMatrix[beatCount] === 1) {
-      sounds.click3.play();
+    if (measure === 0) {
+      if (drumTracks.drunkFunk.trackMatrix.m0[beatCount] === 1) {
+        sounds.cabasa.play();
+      };
+      if (drumTracks.drunkFunk.trackMatrix.m0[beatCount] === 2) {
+        sounds.clap.play();
+      };
+      if (drumTracks.drunkFunk.trackMatrix.m0[beatCount] === 3) {
+        sounds.kickCabasa.play();
+      }
     }
-    if (drumTracks.drunkFunk.trackMatrix[beatCount] === 2) {
-      sounds.click4.play();
-    }
+    if (measure === 1) {
+      if (drumTracks.drunkFunk.trackMatrix.m1[beatCount] === 1) {
+        sounds.cabasa.play();
+      };
+      if (drumTracks.drunkFunk.trackMatrix.m1[beatCount] === 2) {
+        sounds.clap.play();
+      };
+      if (drumTracks.drunkFunk.trackMatrix.m1[beatCount] === 3) {
+        sounds.kickCabasa.play();
+      }
+    }  
   }  
   beatCount++
+  measure++
   if (beatCount === subdivisions) {beatCount = 0}
+  if (measure === 2) {measure = 0}
   // console.log('beat count is', beatCount)
 };
 
