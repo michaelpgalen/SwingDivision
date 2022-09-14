@@ -34,7 +34,7 @@ const sounds = {
 // 1 min = 60_000 ms
 // 60_000 / bpm = duration of quarter note
 // 60_000 / bpm / 4 = duration of 1/16 note
-let bpm = 100; 
+let bpm = 100;
 let subdivisions = rhythmSelector.value;
 let msTempo = (60000 / bpm) / subdivisions;
 let beatCount = 0;
@@ -77,10 +77,10 @@ startStopBtn.addEventListener('click', () => {
 // Add accurate timer constructor function
 function Timer(callback, timeInterval, errorCallback) {
     this.timeInterval = timeInterval;
-    
+
     // Add method to start timer
     this.start = () => {
-      // Set the expected time. The moment in time we start the timer plus whatever the time interval is. 
+      // Set the expected time. The moment in time we start the timer plus whatever the time interval is.
       this.expected = Date.now() + this.timeInterval;
       // Start the timeout and save the id in a property, so we can cancel it later
       this.timeout = setTimeout(this.round, this.timeInterval);
@@ -91,7 +91,7 @@ function Timer(callback, timeInterval, errorCallback) {
       clearTimeout(this.timeout);
       console.log('Timer Stopped');
     }
-    
+
     // Round method that takes care of running the callback and adjusting the time
     this.round = () => {
       // console.log('timeout', this.timeout);
@@ -130,9 +130,9 @@ function updateTempo() {
 
 // samba matrix 80
 const drumTracks = {
-  samba: { 
-   subdivisions: 80,  
-   trackMatrix: [1,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,2, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,3, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,4,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0],
+  samba: {
+   subdivisions: 80,
+   trackMatrix: [1,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,2, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,3, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,4,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0]
    },
    drunkFunk: {
      subdivisions: 5,
@@ -185,8 +185,8 @@ function drumstToPlay() {
       if (drumTracks.drunkFunk.trackMatrix.m1[beatCount] === 3) {
         sounds.kickCabasa.play();
       }
-    }  
-  }  
+    }
+  }
   beatCount++
   measure++
   if (beatCount === subdivisions) {beatCount = 0}
